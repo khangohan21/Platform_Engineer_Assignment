@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodeapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodeapp
+  template:
+    metadata:
+      labels:
+        app: nodeapp
+    spec:
+      containers:
+        - name: nodeapp
+          image: khanwahed/nodeapp:latest
+          ports:
+            - containerPort: 3000 
+          env:
+            - name: MONGODB_URI  
+              value: "mongodb:/13.234.120.211:27017/mydb"  
+            - name: REDIS_HOST
+              value: "13.234.120.211"  
+            - name: REDIS_PORT
+              value: "6379" 

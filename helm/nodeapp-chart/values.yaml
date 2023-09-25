@@ -1,0 +1,17 @@
+image:
+  repository: kawahed/nodeapp
+  tag: latest
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
+
+ingress:
+  enabled: false
+  host: 13.234.120.211
+
+
+mongodbUri: "mongodb://13.234.120.211:27017/mydb"
+redisHost: "13.234.120.211"
+redisPort: 6379

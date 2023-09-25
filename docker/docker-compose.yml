@@ -1,0 +1,33 @@
+version: '3'
+services:
+  node-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nodeapp
+    ports:
+      - "3000:3000"
+    environment:
+      MONGODB_URI: mongodb://13.234.120.211:27017/mydb
+      REDIS_HOST: 13.234.120.211
+      REDIS_PORT: 6379
+    depends_on:
+      - mongodb
+      - redis
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 12345
+    volumes:
+      - ./mongo-data:/data/db
+
+  redis:
+    image: redis:latest
+    container_name: redisdb
+    ports:
+      - "6379:6379"
