@@ -24,10 +24,6 @@ jobs:
           cache: 'npm'
 
       - run: 
-          npm ci
-
- # Add your deployment steps here
-      - name: Deploy to /var/www
-        run: |
           cp -r /var/TEst/_work/Platform_Engineer_Assignment/* /var/www/
+          npm i
           # Ensure that this step performs your deployment tasks          
